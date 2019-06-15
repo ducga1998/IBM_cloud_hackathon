@@ -107,6 +107,7 @@ app.post("/api/visitors", function (request, response) {
 app.get("/api/visitors", function (request, response) {
   var names = [];
   if (!mydb) {
+    console.log('names', names)
     response.json(names);
     return;
   }
@@ -190,7 +191,9 @@ if (cloudant) {
 app.use(express.static(__dirname + '/views'));
 
 
-
+app.get("/api/weather", (req, res) => {
+  return res.send('duc')
+})
 var port = process.env.PORT || 3000
 app.listen(port, function () {
   console.log("To view your app, open this link in your browser: http://localhost:" + port);
